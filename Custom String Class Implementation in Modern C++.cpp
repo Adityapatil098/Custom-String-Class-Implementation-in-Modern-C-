@@ -285,145 +285,101 @@
                  p++;
          }
  }
- int main()
- {
-    STRING s1, s2, s3, s4;
+int main()
+{
+  
+    STRING s1;
 
-    cout << "========== STRING CLASS TESTING ==========" << endl;
+  
+    STRING s2("Vector India");
 
-    // 1. Input
-    cout << "\n--- Test 1: Input ---" << endl;
-    cout << "Enter first string: ";
-    s1.set_data();
+    cout << "s1 = ";
+    cout << s1 << endl;
 
-    cout << "Enter second string: ";
-    s2.set_data();
+    cout << "s2 = ";
+    cout << s2 << endl;
 
-    cout << "\nYou entered:" << endl;
-    cout << "s1 = " << s1 << endl;
+
+    
+    STRING s3(s2);
+
+    cout << "\nAfter copy construction:" << endl;
+    cout << "s3 = " << s3 << endl;
+
+
+    
+    STRING s4;
+    s4 = s2;
+
+    cout << "\nAfter assignment:" << endl;
+    cout << "s4 = " << s4 << endl;
+
+
+
+    STRING s5("Embedded ");
+    STRING s6("Systems");
+
+    STRING s7 = s5 + s6;
+
+    cout << "\nConcatenation:" << endl;
+    cout << "s5 + s6 = " << s7 << endl;
+
+
+    
+    cout << "\nCharacter access:" << endl;
     cout << "s2 = " << s2 << endl;
+    cout << "First character  = " << s2[0] << endl;
+    cout << "Second character = " << s2[1] << endl;
 
 
-    // 2. Copy Constructor
-    cout << "\n--- Test 2: Copy Constructor ---" << endl;
-    STRING s5(s1);
-    cout << "s5 = " << s5 << endl;
+
+    STRING s8;
+
+    cout << "\nEnter a string: ";
+    cin >> s8;
+
+    cout << "You entered: " << s8 << endl;
 
 
-    // 3. Assignment Operator
-    cout << "\n--- Test 3: Assignment Operator ---" << endl;
-    s3 = s1;
-    cout << "s3 = " << s3 << endl;
+    STRING a("Hello");
+    STRING b("Hello");
+    STRING c("World");
+
+    cout << "\nComparison operators:" << endl;
+
+    cout << "a == b : " << (a == b) << endl;
+    cout << "a != c : " << (a != c) << endl;
+    cout << "a < c  : " << (a < c) << endl;
+    cout << "c > a  : " << (c > a) << endl;
+    cout << "a <= b : " << (a <= b) << endl;
+    cout << "a >= b : " << (a >= b) << endl;
 
 
-    // 4. Concatenation using +
-    cout << "\n--- Test 4: operator+ ---" << endl;
-    s4 = s1 + s2;
-    cout << "s1 + s2 = " << s4 << endl;
+    
+    cout << "\nFriend function - Reverse:" << endl;
+
+    STRING r("Vector India");
+    cout << "Before reverse : " << r << endl;
+
+    reverse(r);
+
+    cout << "After reverse  : " << r << endl;
 
 
-    // 5. Less than <
-    cout << "\n--- Test 5: operator< ---" << endl;
-    if(s1 < s2)
-        cout << "s1 is smaller than s2" << endl;
+    
+    cout << "\nFriend function - Palindrome:" << endl;
+
+    STRING p("madam");
+
+    if (Palindrome(p))
+        cout << p << " is palindrome" << endl;
     else
-        cout << "s1 is NOT smaller than s2" << endl;
+        cout << p << " is not palindrome" << endl;
 
-
-    // 6. Greater than >
-    cout << "\n--- Test 6: operator> ---" << endl;
-    if(s1 > s2)
-        cout << "s1 is greater than s2" << endl;
-    else
-        cout << "s1 is NOT greater than s2" << endl;
-
-
-    // 7. Greater than or equal >=
-    cout << "\n--- Test 7: operator>= ---" << endl;
-    if(s1 >= s2)
-        cout << "s1 is greater than or equal to s2" << endl;
-    else
-        cout << "s1 is NOT greater than or equal to s2" << endl;
-
-
-    // 8. Less than or equal <=
-    cout << "\n--- Test 8: operator<= ---" << endl;
-    if(s1 <= s2)
-        cout << "s1 is less than or equal to s2" << endl;
-    else
-        cout << "s1 is NOT less than or equal to s2" << endl;
-
-
-    // 9. Not equal !=
-    cout << "\n--- Test 9: operator!= ---" << endl;
-    if(s1 != s2)
-        cout << "s1 and s2 are NOT equal" << endl;
-    else
-        cout << "s1 and s2 are equal" << endl;
-
-
-    // 10. strcpy
-    cout << "\n--- Test 10: strcpy ---" << endl;
-    strcpy(s3, s2);
-    cout << "After strcpy(s3, s2):" << endl;
-    cout << "s3 = " << s3 << endl;
-
-
-    // 11. strncpy
-    cout << "\n--- Test 11: strncpy ---" << endl;
-    strncpy(s3, s1, 3);
-    cout << "After strncpy(s3, s1, 3):" << endl;
-    cout << "s3 = " << s3 << endl;
-
-
-    // 12. strncmp
-    cout << "\n--- Test 12: strncmp ---" << endl;
-
-    if(strncmp(s1, s2, 3))
-        cout << "First 3 characters are same" << endl;
-    else
-        cout << "First 3 characters are different" << endl;
-
-
-    // 13. strcat
-    cout << "\n--- Test 13: strcat ---" << endl;
-    STRING s6;
-    s6 = strcat(s1, s2);
-
-    cout << "strcat(s1, s2) = " << s6 << endl;
-
-
-    // 14. strrev
-    cout << "\n--- Test 14: strrev ---" << endl;
-    STRING s7(s1);
-
-    cout << "Before reverse: " << s7 << endl;
-    strrev(s7);
-    cout << "After reverse: " << s7 << endl;
-
-
-    // 15. strupr
-    cout << "\n--- Test 15: strupr ---" << endl;
-    STRING s8(s1);
-
-    cout << "Before uppercase: " << s8 << endl;
-    strupr(s8);
-    cout << "After uppercase: " << s8 << endl;
-
-
-    // 16. strlwr
-    cout << "\n--- Test 16: strlwr ---" << endl;
-    STRING s9(s1);
-
-    cout << "Before lowercase: " << s9 << endl;
-    strlwr(s9, 'x');
-    cout << "After lowercase: " << s9 << endl;
-
-
-    cout << "\n========== TESTING COMPLETED ==========" << endl;
 
     return 0;
 }
+
 
  void my_strcpy(char*d,const char*s)
  {
